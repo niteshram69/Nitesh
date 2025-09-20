@@ -132,8 +132,51 @@ export function Resume() {
               </div>
             )}
             {pdfAvailable && (
-              <div className="mt-2 aspect-[4/3] w-full">
-                <iframe src={personalInfo.resumeUrl} className="h-full w-full rounded"></iframe>
+              <div className="mt-2 w-full">
+                <div className="mb-4 flex gap-2">
+                  <a 
+                    href={personalInfo.resumeUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700"
+                  >
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    Open PDF in New Tab
+                  </a>
+                  <a 
+                    href={personalInfo.resumeUrl} 
+                    download
+                    className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2 text-sm hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800"
+                  >
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Download PDF
+                  </a>
+                </div>
+                <div className="aspect-[4/3] w-full rounded-lg border bg-gray-50 dark:bg-gray-900">
+                  <object
+                    data={personalInfo.resumeUrl}
+                    type="application/pdf"
+                    className="h-full w-full rounded-lg"
+                  >
+                    <div className="flex h-full items-center justify-center">
+                      <div className="text-center">
+                        <p className="mb-2">PDF preview not supported in this browser.</p>
+                        <a 
+                          href={personalInfo.resumeUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 underline hover:text-blue-800 dark:text-blue-400"
+                        >
+                          Click here to view the PDF
+                        </a>
+                      </div>
+                    </div>
+                  </object>
+                </div>
               </div>
             )}
           </div>
